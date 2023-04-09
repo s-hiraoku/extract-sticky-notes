@@ -7,15 +7,15 @@ It will populate the description of the Gitlab issue with a link to the URL of t
 
 Before running the script, you need to enter the Figma API token and the ID of the Figma file from which you want to extract stickies.
 
-To obtain the Figma API token, follow the instructions in [Figma API documentation](https://www.figma.com/developers/docs). 2.
-2. open the Figma file from which you want to extract stickies and copy the ID from the URL. 3. 3.
-3. 3. in the `config.ts` file, replace the `FIGMA_TOKEN` and `FILE_ID` values with your API token and file ID, respectively.
+1. To obtain the Figma API token, follow the instructions in [Figma API documentation](https://www.figma.com/developers/docs).
+2. open the Figma file from which you want to extract stickies and copy the ID from the URL.
+3. in the `config.ts` file, replace the `FIGMA_TOKEN` and `FILE_ID` values with your API token and file ID, respectively.
 
 ## How to use
 
-1. run `npm install` to install the dependencies. 2. 2.
-Run `npm start` to run the script. 3.
-3. 3. the script will extract all stickies from the specified Figma file and save them as a CSV file in the `output` directory.
+1. run `npm install` to install the dependencies.
+2. Run `npm start` to run the script.
+3.　the script will extract all stickies from the specified Figma file and save them as a CSV file in the `output` directory.
 
 ## Output CSV for import into GitLab Issues.
 
@@ -25,11 +25,11 @@ A CSV file named `sticky_notes.csv` will be created in the project root director
 
 ### Importing into GitLab Issues
 
-1. log in to GitLab and navigate to the desired project 2.
-2. click "Issues" on the sidebar to access the issues page. 3.
-3. click the "Import issues" drop-down menu in the upper right corner and select "CSV" 4.
-4. 4. click the "Select CSV file" button and select the `sticky_notes.csv` file you just generated.
-5. 5. Adjust the mapping options as needed and click the "Import Issue" button.
+1. log in to GitLab and navigate to the desired project.
+2. click "Issues" on the sidebar to access the issues page. 
+3. click the "Import issues" drop-down menu in the upper right corner and select "CSV".
+4. click the "Select CSV file" button and select the `sticky_notes.csv` file you just generated.
+5. Adjust the mapping options as needed and click the "Import Issue" button.
 
 This will import the FigJam stickies as Issues in GitLab.
 
