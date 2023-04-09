@@ -1,0 +1,17 @@
+{
+  "name": "extract-sticky-notes",
+  "version": "1.0.0",
+  "description": "Script to output information of figma stickies to CSV.",
+  "main": "extract-sticky-notes.ts",
+  "scripts": {
+    "build": "tsc --build ./tsconfig.json",
+    "start": "npm run build && node ./dist/extract-sticky-notes.js",
+    "lint": "eslint ."
+  },
+  "author": "hiraoku.shinichi",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.15.11",
+    "typescript": "^5.0.4"
+  }
+}

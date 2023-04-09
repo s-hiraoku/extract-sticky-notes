@@ -1,0 +1,5 @@
+config.ts
+/node_modules
+/output
+/dist
+/.DS_Store
