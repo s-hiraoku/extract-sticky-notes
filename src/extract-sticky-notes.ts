@@ -1,11 +1,4 @@
-import {
-  FILE_ID,
-  FIGMA_ENDPOINT,
-  FIGMA_TOKEN,
-  FIGMA_URL,
-  OUTPUT_DIRECTORY,
-  OUTPUT_FILE_NAME,
-} from "./config";
+import { FIGMA_URL, OUTPUT_DIRECTORY, OUTPUT_FILE_NAME } from "./config";
 import * as fs from "fs";
 import * as path from "path";
 
