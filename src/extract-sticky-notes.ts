@@ -1,4 +1,4 @@
-import { FIGMA_URL, OUTPUT_DIRECTORY, OUTPUT_FILE_NAME } from "./config";
+import dotenv from "dotenv";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -36,7 +36,7 @@ export const getStickyNotes = async (
   const searchStickyNotes = (node: Node) => {
     if (node.type === "STICKY") {
       const text = node.characters;
-      const url = `${FIGMA_URL}${fileId}?node-id=${node.id}`;
+      const url = `${process.env.FIGMA_URL}${fileId}?node-id=${node.id}`;
       stickyNotes.push({ text, url });
       return;
     }
@@ -50,8 +50,8 @@ export const getStickyNotes = async (
 
 export const saveToCsv = (
   stickyNotes: StickyNote[],
-  fileDirectory: string = OUTPUT_DIRECTORY,
-  fileName: string = OUTPUT_FILE_NAME
+  fileDirectory: string = process.env.OUTPUT_DIRECTORY,
+  fileName: string = process.env.OUTPUT_FILE_NAME
 ): void => {
   if (!fs.existsSync(fileDirectory)) {
     fs.mkdirSync(fileDirectory);
@@ -63,5 +63,7 @@ export const saveToCsv = (
   const rows = stickyNotes.map((note) => `${note.text},${note.url}`).join("\n");
 
   fs.writeFileSync(filePath, header + rows, "utf8");
-  console.log(`Sticky notes saved to ${OUTPUT_DIRECTORY}/${fileName}`);
+  console.log(
+    `Sticky notes saved to ${process.env.OUTPUT_DIRECTORY}/${fileName}`
+  );
 };
