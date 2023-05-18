@@ -1,5 +1,5 @@
-import dotenv from "dotenv";
-import { getStickyNotes, saveToCsv } from "./extract-sticky-notes";
+import dotenv from 'dotenv';
+import { getStickyNotes, saveToCsv } from './extract-sticky-notes';
 
 const main = async () => {
   dotenv.config();
@@ -10,7 +10,7 @@ const main = async () => {
   );
 
   if (!stickyNotes) {
-    console.error("Failed to extract sticky notes.");
+    console.error('Failed to extract sticky notes.');
     return;
   }
   saveToCsv(stickyNotes);
