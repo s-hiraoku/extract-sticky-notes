@@ -1,6 +1,5 @@
-import dotenv from "dotenv";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from 'fs';
+import * as path from 'path';
 
 type StickyNote = {
   text: string;
@@ -19,12 +18,12 @@ export const getStickyNotes = async (
   apiUrl: string,
   apiKey: string
 ): Promise<StickyNote[]> => {
-  const headers = { "X-Figma-Token": apiKey };
+  const headers = { 'X-Figma-Token': apiKey };
   const url = `${apiUrl}${fileId}`;
   const response = await fetch(url, { headers });
 
   if (!response.ok) {
-    console.error("Failed to fetch Figma file data.");
+    console.error('Failed to fetch Figma file data.');
     return null;
   }
 
@@ -34,7 +33,7 @@ export const getStickyNotes = async (
   const stickyNotes: StickyNote[] = [];
 
   const searchStickyNotes = (node: Node) => {
-    if (node.type === "STICKY") {
+    if (node.type === 'STICKY') {
       const text = node.characters;
       const url = `${process.env.FIGMA_API_URL}files/${fileId}?node-id=${node.id}`;
       stickyNotes.push({ text, url });
@@ -59,10 +58,10 @@ export const saveToCsv = (
 
   const filePath = path.join(fileDirectory, fileName);
 
-  const header = "Title,Description\n";
-  const rows = stickyNotes.map((note) => `${note.text},${note.url}`).join("\n");
+  const header = 'Title,Description\n';
+  const rows = stickyNotes.map((note) => `${note.text},${note.url}`).join('\n');
 
-  fs.writeFileSync(filePath, header + rows, "utf8");
+  fs.writeFileSync(filePath, header + rows, 'utf8');
   console.log(
     `Sticky notes saved to ${process.env.OUTPUT_DIRECTORY}/${fileName}`
   );
