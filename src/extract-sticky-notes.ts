@@ -36,7 +36,7 @@ export const getStickyNotes = async (
   const searchStickyNotes = (node: Node) => {
     if (node.type === "STICKY") {
       const text = node.characters;
-      const url = `${process.env.FIGMA_URL}${fileId}?node-id=${node.id}`;
+      const url = `${process.env.FIGMA_API_URL}files/${fileId}?node-id=${node.id}`;
       stickyNotes.push({ text, url });
       return;
     }
