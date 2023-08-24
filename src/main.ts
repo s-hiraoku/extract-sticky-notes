@@ -6,7 +6,8 @@ const main = async () => {
   const stickyNotes = await getStickyNotes(
     process.env.FILE_ID,
     process.env.FIGMA_ENDPOINT,
-    process.env.FIGMA_TOKEN
+    process.env.FIGMA_TOKEN,
+    process.env.FIGMA_BASE_FILE_URL
   );
 
   if (!stickyNotes) {

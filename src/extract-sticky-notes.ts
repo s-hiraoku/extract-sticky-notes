@@ -16,7 +16,8 @@ type Node = {
 export const getStickyNotes = async (
   fileId: string,
   apiUrl: string,
-  apiKey: string
+  apiKey: string,
+  baseFigmaUrl: string = process.env.FIGMA_BASE_FILE_URL
 ): Promise<StickyNote[]> => {
   const headers = { 'X-Figma-Token': apiKey };
   const url = `${apiUrl}${fileId}`;
@@ -35,7 +36,7 @@ export const getStickyNotes = async (
   const searchStickyNotes = (node: Node) => {
     if (node.type === 'STICKY') {
       const text = node.characters;
-      const url = `${process.env.FIGMA_API_URL}files/${fileId}?node-id=${node.id}`;
+      const url = `${baseFigmaUrl}/${fileId}?node-id=${node.id}`;
       stickyNotes.push({ text, url });
       return;
     }
