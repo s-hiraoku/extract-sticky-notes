@@ -1,21 +1,28 @@
 # Figma Sticky Notes Extractor
 
 This is a Node.js script that extracts all stickies from a Figma file and outputs a CSV file for import into GitLab.
-It will populate the description of the Gitlab issue with a link to the URL of that sticky, so you can easily navigate from the issue to Figma.
+The script populates the description of the GitLab issue with a link to the URL of that sticky, allowing for easy navigation from the issue to Figma.
 
 ## Getting Started
 
-Before running the script, you need to enter the Figma API token and the ID of the Figma file from which you want to extract stickies.
+Before running the script, you need to set up the Figma API token and the ID of the Figma file from which you want to extract stickies.
 
-1. To obtain the Figma API token, follow the instructions in [Figma API documentation](https://www.figma.com/developers/docs).
-2. open the Figma file from which you want to extract stickies and copy the ID from the URL.
-3. in the `config.ts` file, replace the `FIGMA_TOKEN` and `FILE_ID` values with your API token and file ID, respectively.
+1. To obtain the Figma API token, follow the instructions in the [Figma API documentation](https://www.figma.com/developers/docs).
+2. Open the Figma file from which you want to extract stickies and copy the ID from the URL.
+3. Create a `.env` file in the project root directory and set the following environment variables:
+   - `FIGMA_TOKEN`: Your Figma API token
+   - `FILE_ID`: ID of the Figma file you want to extract from
+   - `FIGMA_ENDPOINT`: (Optional) Figma API endpoint
+   - `FIGMA_BASE_FILE_URL`: (Optional) Base URL of the Figma file
+   - `OUTPUT_DIRECTORY`: (Optional) Directory to save the CSV file
+   - `OUTPUT_FILE_NAME`: (Optional) Name of the output CSV file
+4. Use the `.env-example` as a reference to set the environment variables.
 
-## How to use
+## Usage
 
-1. run `npm install` to install the dependencies.
-2. Run `npm start` to run the script.
-3.　the script will extract all stickies from the specified Figma file and save them as a CSV file in the `output` directory.
+1. Run `npm install` to install the dependencies.
+2. Execute the script by running `npm start`.
+3. The script will extract all stickies from the specified Figma file and save them as a CSV file in the designated directory (default is `output`).
 
 ## Output CSV for import into GitLab Issues.
 
@@ -26,7 +33,7 @@ A CSV file named `sticky_notes.csv` will be created in the project root director
 ### Importing into GitLab Issues
 
 1. log in to GitLab and navigate to the desired project.
-2. click "Issues" on the sidebar to access the issues page. 
+2. click "Issues" on the sidebar to access the issues page.
 3. click the "Import issues" drop-down menu in the upper right corner and select "CSV".
 4. click the "Select CSV file" button and select the `sticky_notes.csv` file you just generated.
 5. Adjust the mapping options as needed and click the "Import Issue" button.
@@ -34,18 +41,6 @@ A CSV file named `sticky_notes.csv` will be created in the project root director
 This will import the FigJam stickies as Issues in GitLab.
 
 ---
-
-## Configuration
-
-The script has several configuration options that you can adjust to your liking:
-
-- `figma_endpoint`: The Figma API endpoint, which can be changed if Figma changes the API endpoint.
-- `output_directory`: The directory where the CSV files will be stored.
-- `output_file_name`: Name of the CSV file: Name of the CSV file.
-
-## Contributions
-
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
 
