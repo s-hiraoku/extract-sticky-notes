@@ -12,10 +12,10 @@ Before running the script, you need to set up the Figma API token and the ID of 
 3. Create a `.env` file in the project root directory and set the following environment variables:
    - `FIGMA_TOKEN`: Your Figma API token
    - `FILE_ID`: ID of the Figma file you want to extract from
-   - `FIGMA_ENDPOINT`: (Optional) Figma API endpoint
-   - `FIGMA_BASE_FILE_URL`: (Optional) Base URL of the Figma file
-   - `OUTPUT_DIRECTORY`: (Optional) Directory to save the CSV file
-   - `OUTPUT_FILE_NAME`: (Optional) Name of the output CSV file
+   - `FIGMA_ENDPOINT`: Figma API endpoint (https://api.figma.com/v1/files/)
+   - `FIGMA_URL`: Base URL of the Figma file (https://www.figma.com/file/)
+   - `OUTPUT_DIRECTORY`: Directory to save the CSV file
+   - `OUTPUT_FILE_NAME`: Name of the output CSV file
 4. Use the `.env-example` as a reference to set the environment variables.
 
 ## Usage
