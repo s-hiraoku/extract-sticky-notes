@@ -20,7 +20,7 @@ export const getStickyNotes = async (
   figmaUrl: string
 ): Promise<StickyNote[]> => {
   const headers = { 'X-Figma-Token': apiKey };
-  const url = `${apiUrl}${fileId}`;
+  const url = `${apiUrl}/${fileId}`;
   const response = await fetch(url, { headers });
 
   if (!response.ok) {
