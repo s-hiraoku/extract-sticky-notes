@@ -17,7 +17,7 @@ export const getStickyNotes = async (
   fileId: string,
   apiUrl: string,
   apiKey: string,
-  baseFigmaUrl: string = process.env.FIGMA_BASE_FILE_URL
+  figmaUrl: string
 ): Promise<StickyNote[]> => {
   const headers = { 'X-Figma-Token': apiKey };
   const url = `${apiUrl}${fileId}`;
@@ -36,7 +36,7 @@ export const getStickyNotes = async (
   const searchStickyNotes = (node: Node) => {
     if (node.type === 'STICKY') {
       const text = node.characters;
-      const url = `${baseFigmaUrl}/${fileId}?node-id=${node.id}`;
+      const url = `${figmaUrl}/${fileId}?node-id=${node.id}`;
       stickyNotes.push({ text, url });
       return;
     }
@@ -50,8 +50,8 @@ export const getStickyNotes = async (
 
 export const saveToCsv = (
   stickyNotes: StickyNote[],
-  fileDirectory: string = process.env.OUTPUT_DIRECTORY,
-  fileName: string = process.env.OUTPUT_FILE_NAME
+  fileDirectory: string,
+  fileName: string
 ): void => {
   if (!fs.existsSync(fileDirectory)) {
     fs.mkdirSync(fileDirectory);
@@ -63,7 +63,5 @@ export const saveToCsv = (
   const rows = stickyNotes.map((note) => `${note.text},${note.url}`).join('\n');
 
   fs.writeFileSync(filePath, header + rows, 'utf8');
-  console.log(
-    `Sticky notes saved to ${process.env.OUTPUT_DIRECTORY}/${fileName}`
-  );
+  console.log(`Sticky notes saved to ${fileDirectory}/${fileName}`);
 };

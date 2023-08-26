@@ -7,14 +7,18 @@ const main = async () => {
     process.env.FILE_ID,
     process.env.FIGMA_ENDPOINT,
     process.env.FIGMA_TOKEN,
-    process.env.FIGMA_BASE_FILE_URL
+    process.env.FIGMA_URL
   );
 
   if (!stickyNotes) {
     console.error('Failed to extract sticky notes.');
     return;
   }
-  saveToCsv(stickyNotes);
+  saveToCsv(
+    stickyNotes,
+    process.env.OUTPUT_DIRECTORY,
+    process.env.OUTPUT_FILE_NAME
+  );
 };
 
 main();
